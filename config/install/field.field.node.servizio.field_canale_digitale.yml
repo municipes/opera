@@ -1,0 +1,23 @@
+langcode: it
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_canale_digitale
+    - node.type.servizio
+  module:
+    - link
+id: node.servizio.field_canale_digitale
+field_name: field_canale_digitale
+entity_type: node
+bundle: servizio
+label: 'Canale digitale'
+description: '(Accedi al servizio) Link per avviare la procedura di attivazione del servizio.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link
+
