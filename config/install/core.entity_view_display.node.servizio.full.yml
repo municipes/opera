@@ -4,9 +4,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.servizio.field_a_chi_e_rivolto
+    - field.field.node.servizio.field_accedi_al_servizio
     - field.field.node.servizio.field_argomenti
     - field.field.node.servizio.field_business_events
-    - field.field.node.servizio.field_canale_digitale
     - field.field.node.servizio.field_casi_particolari
     - field.field.node.servizio.field_categoria_del_servizio
     - field.field.node.servizio.field_codice_dell_ente_erogatore
@@ -34,7 +34,6 @@ dependencies:
     - field.field.node.servizio.field_vincoli
     - node.type.servizio
   module:
-    - link
     - ui_patterns_field_formatters
     - user
 id: node.servizio.full
@@ -71,27 +70,49 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 6
+    region: content
+  field_accedi_al_servizio:
+    type: pattern_wrapper_entity_reference_formatter
+    label: hidden
+    settings:
+      view_mode: buttons
+      pattern: node_full_field
+      pattern_mapping:
+        'field_wrapper:label':
+          destination: field_label
+          weight: 0
+          plugin: field_wrapper
+          source: label
+        'field_wrapper:items':
+          destination: field_value
+          weight: 1
+          plugin: field_wrapper
+          source: items
+      pattern_settings:
+        node_full_field:
+          attributes: ''
+          override_label: ''
+          intro_text: ''
+          label_size: ''
+          heading_value: ''
+          has_bg_grey: '1'
+          label_visible: null
+          label_menu: null
+          use_card: 0
+          audio: null
+      pattern_variant: default
+      link: false
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_argomenti:
     type: entity_reference_label
     label: above
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
-    weight: 0
-    region: content
-  field_canale_digitale:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 5
+    weight: 50
     region: content
   field_casi_particolari:
     type: pattern_formatter
@@ -113,15 +134,18 @@ content:
         node_full_field:
           attributes: ''
           override_label: ''
-          label_size: ''
+          intro_text: ''
+          label_size: h4
+          label_menu: not_visible
           heading_value: ''
           label_visible: null
-          label_menu: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 17
+    weight: 18
     region: content
   field_come_fare:
     type: pattern_formatter
@@ -152,7 +176,7 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 9
     region: content
   field_condizioni_di_servizio:
     type: pattern_wrapper_entity_reference_formatter
@@ -184,7 +208,7 @@ content:
       pattern_variant: default
       link: false
     third_party_settings: {  }
-    weight: 19
+    weight: 20
     region: content
   field_copertura_geografica:
     type: pattern_formatter
@@ -214,7 +238,7 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 8
     region: content
   field_cosa_serve:
     type: pattern_formatter
@@ -239,13 +263,15 @@ content:
           intro_text: ''
           label_size: ''
           heading_value: ''
+          has_bg_grey: '1'
           label_visible: null
           label_menu: null
+          use_card: 0
           audio: null
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 10
     region: content
   field_cosa_si_ottiene:
     type: pattern_formatter
@@ -276,7 +302,7 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 12
+    weight: 11
     region: content
   field_costi:
     type: pattern_formatter
@@ -307,7 +333,7 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 14
+    weight: 13
     region: content
   field_descrizione_breve:
     type: basic_string
@@ -344,7 +370,7 @@ content:
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 7
     region: content
   field_documenti:
     type: pattern_wrapper_entity_reference_formatter
@@ -368,10 +394,12 @@ content:
           attributes: ''
           override_label: ''
           intro_text: ''
-          label_size: ''
+          label_size: h4
+          label_menu: not_visible
           heading_value: ''
           label_visible: null
-          label_menu: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       link: false
@@ -385,7 +413,7 @@ content:
       view_mode: full
       link: false
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   field_motivo_dello_stato:
     type: basic_string
@@ -414,15 +442,18 @@ content:
         node_full_field:
           attributes: ''
           override_label: ''
-          label_size: ''
+          intro_text: ''
+          label_size: h4
+          label_menu: not_visible
           heading_value: ''
           label_visible: null
-          label_menu: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 15
+    weight: 16
     region: content
   field_punti_di_contatto:
     type: pattern_wrapper_entity_reference_formatter
@@ -443,13 +474,15 @@ content:
           source: items
       pattern_settings:
         node_full_field:
-          attributes: ''
+          attributes: 'data-element="service-area'
           override_label: ''
           intro_text: ''
           label_size: ''
           label_visible: visible
           label_menu: visible
           heading_value: h2
+          use_card: '1'
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       link: false
@@ -483,7 +516,7 @@ content:
     region: content
   field_tempi_e_scadenze:
     type: pattern_wrapper_entity_reference_formatter
-    label: above
+    label: hidden
     settings:
       view_mode: default
       pattern: node_full_field
@@ -511,7 +544,7 @@ content:
       pattern_variant: default
       link: false
     third_party_settings: {  }
-    weight: 13
+    weight: 12
     region: content
   field_ulteriori_informazioni:
     type: pattern_formatter
@@ -533,15 +566,18 @@ content:
         node_full_field:
           attributes: ''
           override_label: ''
-          label_size: ''
+          intro_text: ''
+          label_size: h4
+          label_menu: not_visible
           heading_value: ''
           label_visible: null
-          label_menu: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 18
+    weight: 19
     region: content
   field_unita_organizzative:
     type: pattern_wrapper_entity_reference_formatter
@@ -562,13 +598,15 @@ content:
           source: items
       pattern_settings:
         node_full_field:
-          attributes: ''
+          attributes: 'data-element="service-area"'
           override_label: ''
           intro_text: ''
           label_size: ''
           label_menu: not_visible
           heading_value: ''
           label_visible: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       link: false
@@ -595,15 +633,18 @@ content:
         node_full_field:
           attributes: ''
           override_label: ''
-          label_size: ''
+          intro_text: ''
+          label_size: h4
+          label_menu: not_visible
           heading_value: ''
           label_visible: null
-          label_menu: null
+          use_card: 0
+          has_bg_grey: 0
           audio: null
       pattern_variant: default
       variants_token: {  }
     third_party_settings: {  }
-    weight: 16
+    weight: 17
     region: content
   links:
     settings: {  }

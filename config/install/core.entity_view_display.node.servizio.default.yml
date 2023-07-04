@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - field.field.node.servizio.field_a_chi_e_rivolto
+    - field.field.node.servizio.field_accedi_al_servizio
     - field.field.node.servizio.field_argomenti
     - field.field.node.servizio.field_business_events
-    - field.field.node.servizio.field_canale_digitale
     - field.field.node.servizio.field_casi_particolari
     - field.field.node.servizio.field_categoria_del_servizio
     - field.field.node.servizio.field_codice_dell_ente_erogatore
@@ -47,6 +47,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_accedi_al_servizio:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 32
     region: content
   field_argomenti:
     type: entity_reference_label
@@ -215,7 +224,6 @@ content:
     region: content
 hidden:
   field_business_events: true
-  field_canale_digitale: true
   field_categoria_del_servizio: true
   field_codice_dell_ente_erogatore: true
   field_copertura_geografica: true
